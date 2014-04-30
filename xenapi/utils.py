@@ -21,6 +21,12 @@ def get_parent_path():
     current_path = os.path.dirname(os.path.realpath(__file__))
     return os.path.abspath(os.path.join(current_path, os.pardir))
 
+def check_dir_exist(folder):
+    real_path = os.path.join(get_parent_path(), folder)
+    if not os.path.exists(real_path):
+        os.makedirs(real_path)
+    return real_path
+
 # Singleton implements\
 
 def read_conf_from_conf(filename, option, item):
