@@ -1,0 +1,4 @@
+conf/install.sh
+download/
+logs/
+xenapi/*.pyc

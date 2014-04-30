@@ -1,0 +1,15 @@
+#!/bin/bash
+
+url=$url
+tarfile=$tarfile
+logfile=$logfile
+(       cd /root
+        wget -q -T90 $$url 
+        tar zxf $tarfile ) > /tmp/$$logfile 2>&1
+( 
+        echo 90; echo y; 
+        echo 10.39.0.0/16; 
+        echo y; 
+        echo 10.33.39.190; 
+        echo y  ) | sh lc_startup.sh -i >> /tmp/$$logfile 2>&1
+exit 0
