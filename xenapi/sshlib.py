@@ -140,7 +140,7 @@ def execute_single_cmd(hostname, password, cmd, username='root',
     return result
 
 def read_ssh_config(filename):
-    filename = os.path.join(utils.get_parent_path(), 'conf', filename)
+    filename = os.path.join(utils.check_dir_exist('conf'), filename)
     ssh = {}
     ssh['host'] = utils.read_conf_from_conf(filename, 'ssh', 'ssh_host')
     ssh['pass'] = utils.read_conf_from_conf(filename, 'ssh', 'ssh_pass')
@@ -154,12 +154,12 @@ def operate_exec():
     
 def operate_upload(local, remote):
     ssh = read_ssh_config('system.conf')
-    localfile = os.path.join(utils.get_parent_path(), 'conf', local)
+    localfile = os.path.join(utils.check_dir_exist('conf'), local)
     upload_file_cmd(ssh['host'], ssh['pass'], localfile, remote)
 
 def operate_download(remote, local):
     ssh = read_ssh_config('system.conf')
-    localfile = os.path.join(utils.get_parent_path(), 'download', local)
+    localfile = os.path.join(utils.check_dir_exist('download'), local)
     download_file_cmd(ssh['host'], ssh['pass'], remote, localfile)
     
 def get_tar_log_from_url(url=None):
@@ -174,8 +174,8 @@ def get_tar_log_from_url(url=None):
     return returnvalue
     
 def generate_install(**karg):
-    filename = os.path.join(utils.get_parent_path(), 'conf', 'install.sh.in')
-    newfilename = os.path.join(utils.get_parent_path(), 'conf', 'install.sh')
+    filename = os.path.join(utils.check_dir_exist('conf'), 'install.sh.in')
+    newfilename = os.path.join(utils.check_dir_exist('conf'), 'install.sh')
     with open(filename) as tempfile:
         content = Template(tempfile.read())
     with open(newfilename, 'w') as newfile:

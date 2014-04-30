@@ -66,7 +66,7 @@ class XenController(object):
     
 def read_xen_config(filename):
     import os
-    filename = os.path.join(utils.get_parent_path(), 'conf', filename)
+    filename = os.path.join(utils.check_dir_exist('conf'), filename)
     xen = {}
     xen['host'] = utils.read_conf_from_conf(filename, 'xen', 'xen_host')
     xen['user'] = utils.read_conf_from_conf(filename, 'xen', 'xen_user')

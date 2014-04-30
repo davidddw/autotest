@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
 encoding//xenapi/callxenapi.py=utf-8
+encoding//xenapi/sshlib.py=utf-8
 encoding//xenapi/utils.py=utf-8
 encoding//xenapi/xen_utils.py=utf-8
