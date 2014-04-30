@@ -68,7 +68,7 @@ class CloudLog(Singleton):
         self._logger.setLevel(logging.DEBUG)
         formatter = logging.Formatter(
                     '%(asctime)s %(levelname)s - %(funcName)s - %(message)s')
-        logFileName = os.path.join(get_parent_path(), 'logs', filename)
+        logFileName = os.path.join(check_dir_exist('logs'), filename)
         file_handler = RotatingFileHandler(logFileName,
                                      maxBytes=2000000, backupCount=9)
         file_handler.setLevel(logging.DEBUG)
